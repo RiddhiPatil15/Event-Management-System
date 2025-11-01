@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Create an Account</h2>
+
+<!-- ✅ Error message if duplicate email or invalid input -->
+{% if error %}
+<p class="error-message">{{ error }}</p>
+{% endif %}
+
+<!-- ✅ Success message (optional future use) -->
+{% if success %}
+<p class="success-message">{{ success }}</p>
+{% endif %}
+
+<form method="POST" onsubmit="return validatePassword()" class="signup-form">
+    <label for="username">Email (Username):</label>
+    <input type="email" id="username" name="username" required placeholder="Enter your email">
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required placeholder="Create a strong password">
+    <br><br>
+    <button type="submit">Sign Up</button>
+</form>
+
+<div class="link-group">
+    <a href="{{ url_for('user_login') }}">Already have an account? Login</a> |
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</div>
+
+<script>
+function validatePassword() {
+    const password = document.getElementById("password").value;
+    const pattern = /^(?=.*[0-9])(?=.*[@$!%*?&#]).{8,}$/;
+
+    if (!pattern.test(password)) {
+        alert("Password must be at least 8 characters long, include one number, and one special character (@$!%*?&#).");
+        return false;
+    }
+    return true;
+}
+</script>
+
+{% endblock %}

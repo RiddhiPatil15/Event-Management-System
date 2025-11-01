@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Register for an Event</h2>
+
+    <!-- Success Modal -->
+    {% if success %}
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <p>{{ success }}</p>
+            <button id="okBtn">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("successModal");
+        modal.style.display = "block";
+
+        document.getElementById("okBtn").onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background: #1f2937;
+            color: #38bdf8;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .modal-content button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .modal-content button:hover {
+            background: linear-gradient(90deg, #0ea5e9, #0284c7);
+            box-shadow: 0 0 12px rgba(56,189,248,0.5);
+        }
+    </style>
+    {% endif %}
+
+    <!-- Error Message -->
+    {% if error %}
+    <p style="color: #f87171; font-weight: 500; text-align:center;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Registration Form -->
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <br><br>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br><br>
+        <label>Event:</label>
+        <select name="event_id">
+            {% for e in events %}
+            <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit" class="btn">Register</button>
+    </form>
+
+    <div class="link-group">
+        <a href="{{ url_for('home') }}" class="btn">Back</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>User Login</h2>
+
+{% if error %}
+<script>
+    alert("{{ error }}");
+</script>
+{% endif %}
+
+<form method="POST">
+    <label>Email:</label>
+    <input type="email" name="username" required placeholder="Enter your email">
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" required placeholder="Enter your password">
+    <br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<div class="link-group">
+    <a href="{{ url_for('user_signup') }}">Create an account</a>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</div>
+{% endblock %}

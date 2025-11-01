@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add New Event</h2>
+
+<form method="POST">
+    <label>Event Name:</label>
+    <input type="text" name="name" required placeholder="Enter event name">
+    <br><br>
+
+    <label>Venue:</label>
+    <input type="text" name="venue" required placeholder="Enter venue">
+    <br><br>
+
+    <label>Date:</label>
+    <input type="date" name="date" required
+           min="{{ today }}" max="{{ max_date }}">
+    <br><br>
+
+    <button type="submit">Add Event</button>
+</form>
+{% endblock %}
+

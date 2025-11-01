@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Profile</h2>
+
+<p>Email: {{ user }}</p>
+
+<h3>Registered Events</h3>
+{% if registrations %}
+<table>
+    <tr>
+        <th>Event ID</th>
+        <th>Action</th>
+    </tr>
+    {% for r in registrations %}
+    <tr>
+        <td>{{ r.event_id }}</td>
+        <td><a href="{{ url_for('unregister', event_id=r.event_id) }}">Unregister</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You haven’t registered for any events yet.</p>
+{% endif %}
+{% endblock %}

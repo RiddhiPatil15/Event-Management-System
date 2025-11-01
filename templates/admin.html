@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="dashboard-cards">
+    <div class="card">
+        <h3>Total Users</h3>
+        <p>{{ total_users }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Events</h3>
+        <p>{{ total_events }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Attendees</h3>
+        <p>{{ total_attendees }}</p>
+    </div>
+</div>
+
+<div class="link-group">
+    <a href="{{ url_for('export_attendees') }}" class="btn">Export Attendees CSV</a>
+    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+</div>
+
+{% endblock %}

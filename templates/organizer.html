@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Organizer Panel</h2>
+
+<h3>My Events</h3>
+<table>
+    <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Venue</th>
+        <th>Actions</th>
+    </tr>
+    {% for e in events %}
+    <tr>
+        <td>{{ e.name }}</td>
+        <td>{{ e.date }}</td>
+        <td>{{ e.venue }}</td>
+        <td>
+            <a href="{{ url_for('edit_event', event_id=e.id) }}">Edit</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Attendees</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Event</th>
+    </tr>
+    {% for a in attendees %}
+    <tr>
+        <td>{{ a.name }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.event_name if a.event_name else a.event_id }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="link-group">
+    <a href="{{ url_for('add_event') }}" class="btn">Add New Event</a>
+    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+</div>
+{% endblock %}
