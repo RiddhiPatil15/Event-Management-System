@@ -25,9 +25,9 @@ This project provides an easy-to-use admin dashboard for managing events and att
 
 ---
 
-## 🗂️ Folder Structure
-EventManagementSystem/
-│
+## 🗂️ Folder Structure<br>
+EventManagementSystem/<br>
+│<br>
 ├── static/ # CSS, JS, and images<br>
 ├── templates/ # HTML templates (home.html, dashboard.html, etc.)<br>
 ├── app.py # Main Flask application<br>
