@@ -28,8 +28,8 @@ This project provides an easy-to-use admin dashboard for managing events and att
 ## 🗂️ Folder Structure
 EventManagementSystem/
 │
-├── static/ # CSS, JS, and images
-├── templates/ # HTML templates (home.html, dashboard.html, etc.)
-├── app.py # Main Flask application
-├── serviceAccountKey.json # Firebase credentials (NOT included in repo)
-└── requirements.txt # Python dependencies
+├── static/ # CSS, JS, and images<br>
+├── templates/ # HTML templates (home.html, dashboard.html, etc.)<br>
+├── app.py # Main Flask application<br>
+├── serviceAccountKey.json # Firebase credentials (NOT included in repo)<br>
+└── requirements.txt # Python dependencies<br>
